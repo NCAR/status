@@ -4,10 +4,10 @@ workflows:
   version: 2
   default:
     jobs:
-      - "python-3.7"
+      - "build"
 
 jobs:
-  "python-3.7":
+  "build":
     docker:
       - image: circleci/python:3.7
 
@@ -24,4 +24,8 @@ jobs:
             mkdir -p deploy 
             mv status.html deploy/index.html
             cp static/style.css deploy/
+
+      - persist_to_workspace:
+          root: deploy/ 
+          paths: deploy/
     
