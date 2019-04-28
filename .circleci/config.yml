@@ -14,8 +14,8 @@ jobs:
     steps:
       - checkout 
       - run:
-          name: Install Packages
-          command: pip install pyyaml jinja2 requests 
+          name: Installing Packages
+          command: pip install --user pyyaml jinja2 requests 
 
       - run:
           name: Building Dashboard
