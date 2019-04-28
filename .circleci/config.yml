@@ -23,9 +23,5 @@ jobs:
             python make_status.py 
             mkdir -p deploy 
             mv status.html deploy/index.html
-            cd deploy/ && cp ../static/style.css . 
-
-      - persist_to_workspace:
-          root: deploy
-          paths: deploy
-    
+            cp static/style.css deploy/
+            pwd && ls -ltr
