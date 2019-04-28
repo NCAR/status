@@ -25,3 +25,6 @@ jobs:
             mv status.html deploy/index.html
             cp static/style.css deploy/
             pwd && ls -ltr
+      - persist_to_workspace:
+          root: .
+          paths: ./deploy 
