@@ -1,0 +1,27 @@
+version: 2
+# Tell CircleCI to use this workflow
+workflows:
+  version: 2
+  default:
+    jobs:
+      - "python-3.7"
+
+jobs:
+  "python-3.7":
+    docker:
+      - image: circleci/python:3.7
+
+    steps:
+      - checkout 
+      - run:
+          name: Install Packages
+          command: pip install pyyaml jinja2 requests 
+
+      - run:
+          name: Building Dashboard
+          command: |
+            python make_status.py 
+            mkdir -p deploy 
+            mv status.html deploy/index.html
+            cp static/style.css deploy/
+    
