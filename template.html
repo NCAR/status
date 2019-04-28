@@ -5,14 +5,13 @@
   </head>
   <body>
     <div id="wrapper">
-    <h1>Intake Project Dashboard</h1>
+    <h1>XDev and Earth System Informatics Teams' Project Dashboard</h1>
     {% for section in config %}
     <h2>{{ section.name }}</h2>
     <table align='center'>
       <tr>
         <th>Name</th>
-        <th>Travis</th>
-        <th>AppVeyor</th>
+        <th>CircleCI</th>
         <th>Coverage</th>
         <th>ReadTheDocs</th>
         <th>PyPI</th>
@@ -23,34 +22,19 @@
         <td align='left'>
           <a href="http://github.com/{{ package.repo }}">{{ package.name }}</a>
         </td>
-          {% if 'travis' in package.badges %}
+          {% if 'circleci' in package.badges %}
           <td align='left'>
-            <a href="https://travis-ci.{{ package.travis_dot }}/{{ package.travis_project }}">
-              <img src="https://travis-ci.{{ package.travis_dot }}/{{ package.travis_project }}.svg?branch=master">
+            <a href="https://circleci.com/gh/{{ package.repo }}/tree/master">            
+              <img src="https://img.shields.io/circleci/project/github/{{ package.repo }}/master.svg?style=for-the-badge&logo=circleci">
             </a>
           </td>
           {% else %}
           <td align='center'>-</td>
           {% endif %}
-          {% if 'appveyor' in package.badges %}
+          {% if 'codecov' in package.badges %}
           <td align='left'>
-            <a href="https://ci.appveyor.com/project/{{ package.appveyor_project }}?branch=master">
-              <img src="https://img.shields.io/appveyor/ci/{{ package.appveyor_project }}/master.svg">
-            </a>
-          </td>
-          {% else %}
-          <td align='center'>-</td>
-          {% endif %}
-          {% if 'coveralls' in package.badges %}
-          <td align='left'>
-            <a href="https://coveralls.io/r/{{ package.repo }}?branch=master">
-              <img src="https://coveralls.io/repos/{{ package.repo }}/badge.svg?branch=master">
-            </a>
-          </td>
-          {% elif 'codecov' in package.badges %}
-          <td align='left'>
-            <a href="https://codecov.io/gh/{{ package.repo }}?branch=master">
-              <img src="https://codecov.io/gh/{{ package.repo }}/branch/master/graph/badge.svg">
+            <a href="https://codecov.io/gh/{{ package.repo }}">
+              <img src="https://img.shields.io/codecov/c/github/{{ package.repo }}.svg?style=for-the-badge"> 
             </a>
           </td>
           {% else %}
@@ -58,8 +42,8 @@
           {% endif %}
           {% if 'rtd' in package.badges %}
           <td align='left'>
-            <a href="https://readthedocs.org/projects/{{ package.rtd_name }}/?badge=latest">
-              <img src="https://readthedocs.org/projects/{{ package.rtd_name }}/badge/?version=latest">
+            <a href="https://{{ package.rtd_name }}.readthedocs.io/en/latest/?badge=latest">
+              <img src="https://img.shields.io/readthedocs/{{ package.rtd_name }}/latest.svg?style=for-the-badge">
             </a>
           </td>
           {% else %}
@@ -68,7 +52,8 @@
           {% if 'pypi' in package.badges %}
           <td align='left'>
             <a href="https://pypi.python.org/pypi/{{ package.pypi_name }}">
-              <img src="https://pypip.in/v/{{ package.pypi_name }}/badge.svg?colorB=cc77dd">
+              <img src="https://img.shields.io/pypi/v/{{ package.pypi_name }}.svg?style=for-the-badge&colorB=cc77dd">
+              
             </a>
           </td>
           {% else %}
@@ -77,7 +62,8 @@
           {% if 'conda' in package.badges %}
           <td align='left'>
             <a href="https://anaconda.org/{{ package.conda_channel }}/{{ package.conda_package }}">
-              <img src="https://img.shields.io/conda/vn/{{ package.conda_channel }}/{{ package.conda_package }}.svg?colorB=4488ff&style=flat">
+              <img src="https://img.shields.io/conda/vn/{{ package.conda_channel }}/{{ package.conda_package }}.svg?style=for-the-badge&colorB=4488ff">
+              
             </a>
           </td>
           {% else %}
@@ -86,7 +72,8 @@
           {% if 'conda-forge' in package.badges %}
           <td align='left'>
             <a href="https://anaconda.org/conda-forge/{{ package.conda_package }}">
-              <img src="https://img.shields.io/conda/vn/conda-forge/{{ package.conda_package }}.svg?colorB=4488ff&style=flat">
+              <img src="https://img.shields.io/conda/vn/conda-forge/{{ package.conda_package }}.svg?style=for-the-badge&colorB=4488ff">
+              
             </a>
           </td>
           {% else %}
@@ -95,7 +82,7 @@
           {% if 'defaults' in package.badges %}
           <td align='left'>
             <a href="https://anaconda.org/anaconda/{{ package.conda_package }}">
-              <img src="https://img.shields.io/conda/vn/anaconda/{{ package.conda_package }}.svg?colorB=4488ff&label=defaults&style=flat">
+              <img src="https://img.shields.io/conda/vn/anaconda/{{ package.conda_package }}.svg?style=for-the-badge&colorB=4488ff">
             </a>
           </td>
           {% else %}

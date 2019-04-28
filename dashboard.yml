@@ -2,107 +2,61 @@
 
   packages:
 
-  - repo: intake/intake
-    badges: travis, appveyor, rtd, pypi, conda, conda-forge, defaults
-    appveyor_project: jsignell/intake
+  - repo: NCAR/cookiecutter-pypackage
+    badges: circleci
 
-  - repo: intake/intake-xarray
-    badges: travis, appveyor, rtd, pypi, conda, conda-forge, defaults
-    appveyor_project: jsignell/intake-xarray
+  - repo: NCAR/esmlab
+    badges: circleci, codecov, rtd, pypi, conda-forge
 
-  - repo: intake/intake-parquet
-    badges: travis, rtd, pypi, conda, conda-forge
+  - repo: NCAR/esmlab-regrid
+    badges: circleci, codecov, rtd
 
-  - repo: intake/intake-spark
-    badges: travis, rtd, pypi, conda, conda-forge
+  - repo: NCAR/intake-esm
+    badges: circleci, codecov, rtd, pypi, conda-forge
 
-  - repo: intake/intake-accumulo
-    badges: travis, rtd, pypi, conda, conda-forge
+  - repo: NCAR/jupyterlab-pbs
+    badges: circleci
 
-  - repo: intake/intake-sql
-    badges: travis, rtd, pypi, conda, conda-forge
+  - repo: marbl-ecosys/marbl-forcing
+    badges: None
 
-  - repo: intake/intake-elasticsearch
-    badges: travis, rtd, pypi, conda, conda-forge
+  - repo: NCAR/ncar-jobqueue
+    badges: pypi
 
-  - repo: intake/intake-avro
-    badges: travis, rtd, pypi, conda, conda-forge
+  - repo: NCAR/NCAR-pangeo-tutorial
+    badges: rtd 
+    rtd_name: ncar-pangeo-toolbox-guide
 
-  - repo: intake/intake-astro
-    badges: travis, rtd, pypi, conda, conda-forge
+  - repo: matt-long/obm
+    badges: None
 
-  - repo: intake/intake-netflow
-    badges: travis, rtd, conda
+  - repo: NCAR/xcollection
+    badges: circleci, codecov, rtd
 
-  - repo: intake/intake-mongo
-    badges: travis, rtd, conda
+  - repo: NCAR/xdev-bot
+    badges: circleci, codecov
 
-  - repo: intake/intake-postgres
-    badges: travis, rtd, conda
+  - repo: NCAR/xncml
+    badges: circleci, codecov, rtd
 
-  - repo: intake/intake-odbc
-    badges: travis, rtd, conda
+  - repo: NCAR/xreshaper
+    badges: circleci, codecov, rtd
 
-  - repo: intake/intake-solr
-    badges: travis, rtd, conda
-
-  - repo: intake/intake-splunk
-    badges: travis, rtd, conda
-
-  - repo: intake/intake-hbase
-    badges: travis, rtd, conda
-
-  - repo: informatics-lab/intake_geopandas
-    conda_channel: informaticslab
-    travis_dot: com
-    badges: travis, rtd, conda
-
-  - repo: informatics-lab/intake-dynamodb
-    conda_channel: informaticslab
-    conda_package: intake_dynamodb
-    travis_dot: com
-    badges: travis, rtd, conda
-
-  - repo: informatics-lab/intake-iris
-    conda_channel: informaticslab
-    conda_package: intake_iris
-    travis_dot: com
-    badges: travis, rtd, conda
-
-  - repo: informatics-lab/intake-s3-manifests
-    conda_channel: informaticslab
-    conda_package: intake_s3_manifests
-    travis_dot: com
-    badges: travis, rtd, conda
 
 - name: Associated packages
 
   packages:
 
   - repo: dask/dask
-    appveyor_project: daskdev/dask
-    badges: travis, appveyor, coveralls, rtd, pypi, conda-forge, defaults
+    badges: rtd, pypi, conda-forge, defaults
+  
+  - repo: dask/dask-mpi
+    badges: rtd, pypi, conda-forge 
 
-  - repo: pandas-dev/pandas
-    badges: travis, appveyor, codecov, rtd, pypi, conda-forge, defaults
+  - repo: dask/dask-jobqueue
+    badges: rtd, pypi, conda-forge 
 
   - repo: pydata/xarray
-    appveyor_project: shoyer/xray
-    badges: travis, appveyor, coveralls, rtd, pypi, conda-forge, defaults
+    badges: rtd, pypi, conda-forge, defaults
+    rtd_name: xray
 
-  - repo: pyviz/hvplot
-    conda_channel: pyviz
-    appveyor_project: philippjfr/hvplot
-    badges: travis, appveyor, coveralls, rtd, pypi, conda, conda-forge, defaults
-
-  - repo: zarr-developers/zarr
-    badges: travis, appveyor, coveralls, rtd, pypi, conda-forge, defaults
-
-  - repo: Unidata/netcdf4-python
-    pypi_name: netCDF4
-    conda_package: netCDF4
-    appveyor_project: jswhit/netcdf4-python
-    badges: travis, appveyor, pypi, conda-forge, defaults
-
-  - repo: dask/fastparquet
-    badges: travis, rtd, pypi, conda-forge, defaults
