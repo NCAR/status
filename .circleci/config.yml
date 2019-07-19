@@ -1,13 +1,7 @@
-version: 2
-# Tell CircleCI to use this workflow
-workflows:
-  version: 2
-  default:
-    jobs:
-      - "build"
+version: 2.1
 
 jobs:
-  "build":
+  build-job:
     docker:
       - image: circleci/python:3.7
 
@@ -25,6 +19,66 @@ jobs:
             mv status.html deploy/index.html
             cp static/style.css deploy/
             pwd && ls -ltr
+
+      - store_artifacts:
+          path: deploy/
+
       - persist_to_workspace:
           root: .
-          paths: ./deploy 
+          paths: 
+            - deploy/ 
+
+  deploy-job:
+    docker:
+      - image: circleci/python:3.7
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: /tmp/workspace
+
+      - add_ssh_keys:
+          fingerprints:
+            - "kkd"
+              
+      - run:
+          name: Copy over built site files
+          command: rm -rf deploy && cp -r /tmp/workspace/deploy ../deploy 
+      
+      - run:
+          name: Change to gh-pages branch and replace w/ new site
+          command: |
+            git checkout gh-pages
+            rm -rf ./*
+            cp -r ../deploy/* ./
+            touch ./index.html
+
+      - run:
+          name: Commit results and push to gh-pages
+          command: |
+            git config --global user.email "abanihi@ucar.edu"
+            git config --global user.name "Xdev Bot"
+            git add -A
+            git commit -m "Automated web deploy"
+            git push -f origin gh-pages:gh-pages
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - build-job:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+      - deploy-job:
+          requires:
+            - build-job
+          filters:
+            branches:
+              only:
+                - master
+              ignore:
+                - gh-pages
+              
