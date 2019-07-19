@@ -59,7 +59,7 @@ jobs:
             git config --global user.email "abanihi@ucar.edu"
             git config --global user.name "Xdev Bot"
             git add -A
-            git commit -m "Automated web deploy"
+            git commit -m "Automated dashboard deploy"
             git push -f origin gh-pages:gh-pages
 
 workflows:
