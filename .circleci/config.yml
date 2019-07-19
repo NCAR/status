@@ -1,0 +1,30 @@
+version: 2
+# Tell CircleCI to use this workflow
+workflows:
+  version: 2
+  default:
+    jobs:
+      - "build"
+
+jobs:
+  "build":
+    docker:
+      - image: circleci/python:3.7
+
+    steps:
+      - checkout 
+      - run:
+          name: Installing Packages
+          command: pip install --user pyyaml jinja2 requests 
+
+      - run:
+          name: Building Dashboard
+          command: |
+            python make_status.py 
+            mkdir -p deploy 
+            mv status.html deploy/index.html
+            cp static/style.css deploy/
+            pwd && ls -ltr
+      - persist_to_workspace:
+          root: .
+          paths: ./deploy 
