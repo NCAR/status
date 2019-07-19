@@ -40,7 +40,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "kkd"
+            - "64:72:76:da:f5:6e:6c:49:01:25:a7:79:1d:9c:af:38"
               
       - run:
           name: Copy over built site files
@@ -50,7 +50,6 @@ jobs:
           name: Change to gh-pages branch and replace w/ new site
           command: |
             git checkout gh-pages
-            rm -rf ./*
             cp -r ../deploy/* ./
             touch ./index.html
 
